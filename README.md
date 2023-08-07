@@ -1,16 +1,8 @@
-# shoishob
+# Shoishob Mobile App
+A lifestyle companion Android app where you can Easily sign up and log in with email verification. Recover your    
+account if you forget your password. Update your profile information hassle-free. Book Turf slots and bus tickets  
+with payment option. Join tournaments and events, and stay fit with exercise videos and stopwatch tracking. Check  
+out the leaderboards and view your activity history and achievements.
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
