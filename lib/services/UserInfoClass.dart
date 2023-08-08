@@ -6,7 +6,7 @@ import 'package:shoishob/dbHelper/mongoDB.dart';
 import 'package:shoishob/services/session_manager.dart';
 
 class UserInfoClass {
-  String? email, name, photoUrl,id;
+  String? email, name, photoUrl, id;
 
   UserInfoClass() {
     _getUserData();
@@ -22,12 +22,13 @@ class UserInfoClass {
       var userData = UserModel.fromJson(snap as Map<String, dynamic>);
       name = userData.name;
       photoUrl = userData.photo;
-      print(name);
-      print(photoUrl);
-      print(email);
-      SessionController().userEmail=email;
-      SessionController().userName=name;
-      SessionController().userPhotoUrl=photoUrl;
+      // print(name);
+      // print(photoUrl);
+      // print(email);
+      SessionController().userEmail = email;
+      SessionController().userName = name;
+      SessionController().userPhotoUrl = photoUrl;
     }
   }
+
 }

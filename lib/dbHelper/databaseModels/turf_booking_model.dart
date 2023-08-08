@@ -25,9 +25,8 @@ class TurfBookingModel {
   DateTime createdAt;
   DateTime updatedAt;
   String city;
-  String person;
+  int person;
   String transactionId;
-  String bookingId;
 
   TurfBookingModel({
     required this.address,
@@ -46,7 +45,6 @@ class TurfBookingModel {
     required this.city,
     required this.person,
     required this.transactionId,
-    required this.bookingId,
   });
 
   factory TurfBookingModel.fromJson(Map<String, dynamic> json) =>
@@ -67,7 +65,6 @@ class TurfBookingModel {
         city: json["city"],
         person: json["person"],
         transactionId: json["transactionId"],
-        bookingId: json["bookingId"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -87,6 +84,5 @@ class TurfBookingModel {
         "city": city,
         "person": person,
         "transactionId": transactionId,
-        "bookingId": bookingId,
       };
 }

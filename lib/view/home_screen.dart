@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * .02),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(SessionController().userPhotoUrl.toString()),
+                backgroundImage: NetworkImage(SessionController().userPhotoUrl.toString(), scale: 1.0),
                 radius: screenHeight * 0.03,
               ),
             ),
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Container(
           //Background Image
-          height: screenHeight * 1.1,
+          height: screenHeight * 1,
           width: screenWidth * 1.1,
           decoration: const BoxDecoration(
             image: DecorationImage(

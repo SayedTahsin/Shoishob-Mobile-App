@@ -18,7 +18,7 @@ class _WorkScreenState extends State<WorkScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        height: screenHeight * 1.1,
+        height: screenHeight * 1,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/background.png"),

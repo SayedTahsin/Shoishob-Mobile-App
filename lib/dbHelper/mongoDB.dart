@@ -59,10 +59,35 @@ class MongoDatabase {
     return arrData;
   }
 
+  static Future<Map<String, dynamic>?> getBookingData(
+      String email, String date) async {
+    final arrData = await turfBookingCollection
+        .findOne(where.eq('email', email).eq('selectedDate', date));
+    return arrData;
+  }
+
+
+
+  static Future<Map<String, dynamic>?> getBookingDataForDuplicated(
+      String slot, String date, String turf) async {
+    final arrData = await turfBookingCollection.findOne(
+        where.eq('selectedDate', date).eq('slot', slot).eq('turf', turf));
+    return arrData;
+  }
+
   static Future<List<Map<String, dynamic>>> getTurfInfo() async {
     final arrData = await turfDataCollection.find().toList();
     return arrData;
   }
+  static Future<List<Map<String, dynamic>>> getBookingInfo() async {
+    final arrData = await turfBookingCollection.find().toList();
+    return arrData;
+  }
+  static Future<List<Map<String, dynamic>>> getTicketInfo() async {
+    final arrData = await ticketCollection.find().toList();
+    return arrData;
+  }
+
 
   static Future<void> insertTickets(DatabaseModelTicket data) async {
     try {
@@ -79,14 +104,16 @@ class MongoDatabase {
   }
 
   Future<void> insertTicketsData(String name, String Date, String phone,
-      String pickup, String destination, String ticketNo) async {
+      String pickup, String destination, String ticketNo,String email) async {
     final data = DatabaseModelTicket(
         name: name,
         date: Date,
         phone: phone,
         pickup: pickup,
         destination: destination,
-        ticketNo: ticketNo);
+        ticketNo: ticketNo,
+        email: email
+    );
     await MongoDatabase.insertTickets(data);
   }
 
@@ -112,12 +139,11 @@ class MongoDatabase {
       String email,
       String username,
       String phone,
-      String bookingId,
       String address,
       String city,
       String ownerID,
       bool paid,
-      String person,
+      int person,
       String selectedDate,
       String transactionId,
       String turfName) async {
@@ -131,7 +157,6 @@ class MongoDatabase {
         name: username,
         phone: phone,
         address: address,
-        bookingId: bookingId,
         city: city,
         ownerId: ownerID,
         paid: false,
@@ -140,5 +165,12 @@ class MongoDatabase {
         transactionId: transactionId,
         turf: turfName);
     await MongoDatabase.insertBookingInfo(data);
+  }
+
+  Future<void> updateTransaction(
+      String email, String date, String slot, String transactionID) async {
+    var snap = await turfBookingCollection.update(
+        where.eq('email', email).eq('selectedDate', date).eq('slot', slot),
+        modify.set('transactionId', transactionID).set('paid', true));
   }
 }

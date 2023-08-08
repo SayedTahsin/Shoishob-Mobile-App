@@ -3,10 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shoishob/res/colors.dart';
 import 'package:shoishob/services/session_manager.dart';
+import 'package:shoishob/view/booking_list.dart';
 import 'package:shoishob/view/login_screen.dart';
 import 'package:shoishob/view/profile_achivements.dart';
 import 'package:shoishob/view/profile_activity.dart';
 import 'package:shoishob/view/profile_stats.dart';
+import 'package:shoishob/view/ticketList.dart';
 
 import '../main.dart';
 import '../res/components/AppButton.dart';
@@ -113,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       });
                     },
                     child: Text(
-                      "ACHIVEMENTS",
+                      "TICKETS",
                       style: TextStyle(
                           fontSize: screenWidth * 0.035,
                           color: AppColors.buttonColor,
@@ -129,7 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       });
                     },
                     child: Text(
-                      "ACTIVITY",
+                      "BOOKINGS",
                       style: TextStyle(
                           fontSize: screenWidth * 0.035,
                           color: AppColors.buttonColor,
@@ -143,17 +145,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               if (opt == 0) ...[
                 ProfileSTATS(),
               ] else if (opt == 1) ...[
-                ProfileAchivements(),
+                TicketList(),
               ] else ...[
-                Activity(),
+                BookingList(),
               ],
-              Container(
-                child: AppButton(
-                    title: "Log Out",
-                    onPress: () {
-                      signOut();
-                    }),
-              ),
+              SizedBox(height: screenHeight * 0.02),
+              AppButton(
+                  title: "Log Out",
+                  onPress: () {
+                    signOut();
+                  }),
             ],
           ),
         ),

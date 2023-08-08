@@ -15,8 +15,10 @@ class TurfOverview extends StatelessWidget {
     required this.price,
     required this.description,
     required this.rules,
+    required this.ownerId,
+    required this.logo,
   });
-  final String pic, name, address, price, description, rules;
+  final String pic, name, address, price, description, rules, ownerId, logo;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -60,12 +62,6 @@ class TurfOverview extends StatelessWidget {
                       fontWeight: FontWeight.w900),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.03),
-              Text(
-                "Pricing",
-                style: TextStyle(
-                    fontSize: screenWidth * 0.05, fontFamily: "Roboto"),
-              ),
               SizedBox(height: screenHeight * 0.02),
               Text(
                 "$price Taka per Hour",
@@ -88,6 +84,8 @@ class TurfOverview extends StatelessWidget {
                         price: price,
                         userEmail: SessionController().userEmail.toString(),
                         userName: SessionController().userName.toString(),
+                        logo: logo,
+                        ownerId: ownerId,
                       ),
                     ),
                   );
@@ -131,7 +129,7 @@ class TurfOverview extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.01),
+              SizedBox(height: screenHeight * 0.1),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
                 child: Text(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shoishob/dbHelper/mongoDB.dart';
 import 'package:shoishob/res/components/AppButton.dart';
+import 'package:shoishob/services/session_manager.dart';
 
 import '../res/colors.dart';
 import '../utils/utils.dart';
@@ -99,8 +100,9 @@ class _TicketState extends State<Ticket> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           QrImageView(
-                            data: ticketID,
-                            version: QrVersions.min,
+                            data:
+                                "$ticketID\n${widget.name}\n${widget.phone}\n${widget.date}\n${widget.from}\n${widget.destination}",
+                            version: QrVersions.auto,
                             size: 100,
                             gapless: true,
                           ),
@@ -190,7 +192,8 @@ class _TicketState extends State<Ticket> {
                       widget.phone,
                       widget.from,
                       widget.destination,
-                      ticketID);
+                      ticketID,
+                      SessionController().userEmail.toString());
                 }),
           ],
         ),

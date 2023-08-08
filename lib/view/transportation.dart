@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shoishob/dbHelper/mongoDB.dart';
 import 'package:shoishob/res/components/AppButton.dart';
+import 'package:shoishob/services/session_manager.dart';
 import 'package:shoishob/view/ticket.dart';
 
 import '../res/colors.dart';
@@ -53,6 +54,7 @@ class _TransportState extends State<Transport> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+    nameController.text = SessionController().userName.toString();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -91,6 +93,7 @@ class _TransportState extends State<Transport> {
                     AppTextField(
                       myController: nameController,
                       focusNode: nameFocusNode,
+                      enable: false,
                       onFiledSubmittedValue: (value) {},
                       onValidator: (value) {
                         return value.isEmpty ? 'Enter your name' : null;
@@ -109,7 +112,7 @@ class _TransportState extends State<Transport> {
                               ? 'Enter your phone number'
                               : null;
                         },
-                        keyBoardType: TextInputType.visiblePassword,
+                        keyBoardType: TextInputType.number,
                         hint: "Phone",
                         obsecureText: false),
                   ],

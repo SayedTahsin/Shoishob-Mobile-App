@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shoishob/res/components/AppButton.dart';
 import 'package:shoishob/view/payment.dart';
 
@@ -15,8 +14,10 @@ class BookingScreen extends StatefulWidget {
     required this.price,
     required this.userName,
     required this.userEmail,
+    required this.ownerId,
+    required this.logo,
   });
-  final String name, address, price, userName, userEmail;
+  final String name, address, price, userName, userEmail, ownerId, logo;
 
   @override
   State<BookingScreen> createState() => _BookingScreenState();
@@ -29,13 +30,19 @@ class _BookingScreenState extends State<BookingScreen> {
   final nameFocusNode = FocusNode();
   final emailFocusNode = FocusNode();
   DateTime selectedDate = DateTime.now();
-
+  String date = DateFormat("MMM d, yyyy").format(DateTime.now());
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = const [
-      DropdownMenuItem(value: "USA", child: Text("8.00 AM - 9.00 AM")),
-      DropdownMenuItem(value: "Canada", child: Text("9.00 AM - 10.00 AM")),
-      DropdownMenuItem(value: "Brazil", child: Text("10.00 AM - 11.00 AM")),
-      DropdownMenuItem(value: "England", child: Text("11.00 AM - 12.00 PM")),
+      DropdownMenuItem(value: "USA", child: Text("04.00 PM - 05.00 PM")),
+      DropdownMenuItem(value: "Canada", child: Text("05.00 PM - 06.00 PM")),
+      DropdownMenuItem(value: "Brazil", child: Text("06.00 PM - 07.00 PM")),
+      DropdownMenuItem(value: "England", child: Text("07.00 PM - 08.00 PM")),
+      DropdownMenuItem(value: "London", child: Text("08.00 PM - 09.00 PM")),
+      DropdownMenuItem(value: "Australia", child: Text("09.00 PM - 10.00 PM")),
+      DropdownMenuItem(value: "Zimbabwe", child: Text("10.00 PM - 11.00 PM")),
+      DropdownMenuItem(
+          value: "UgandaCapital", child: Text("11.00 PM - 12.00 AM")),
+      DropdownMenuItem(value: "Argentina", child: Text("12.00 AM - 01.00 AM")),
     ];
     return menuItems;
   }
@@ -57,7 +64,7 @@ class _BookingScreenState extends State<BookingScreen> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: screenHeight * 1.1,
+          height: screenHeight * 1,
           width: screenWidth * 1.1,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -140,16 +147,16 @@ class _BookingScreenState extends State<BookingScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   AppButton(
-                    title:
-                        "${selectedDate.day} - ${selectedDate.month} - ${selectedDate.year}",
+                    title: date,
                     onPress: () async {
                       DateTime? pickedDate = await showDatePicker(
                           context: context,
                           initialDate: DateTime.now(),
                           firstDate: DateTime(2000),
-                          lastDate: DateTime(3000));
+                          lastDate: DateTime(2100));
                       if (pickedDate != null) {
                         selectedDate = pickedDate;
+                        date = DateFormat("MMM d, yyyy").format(pickedDate);
                         setState(() {});
                       } else {}
                     },
@@ -209,8 +216,9 @@ class _BookingScreenState extends State<BookingScreen> {
                         turfName: widget.name,
                         userMail: widget.userEmail,
                         slot: selectedValue,
-                        date:
-                            "${selectedDate.day} - ${selectedDate.month} - ${selectedDate.year}",
+                        date: date,
+                        logo: widget.logo,
+                        ownerId: widget.ownerId,
                       ),
                     ),
                   );

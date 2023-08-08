@@ -16,8 +16,18 @@ class TurfTile extends StatelessWidget {
     required this.price,
     required this.phone,
     required this.city,
+    required this.ownerId,
   });
-  final turfName, address, about, rules, logo, cover, price, phone, city;
+  final turfName,
+      address,
+      about,
+      rules,
+      logo,
+      cover,
+      price,
+      phone,
+      city,
+      ownerId;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +45,8 @@ class TurfTile extends StatelessWidget {
               price: price,
               description: about,
               rules: rules,
+              ownerId: ownerId,
+              logo: logo,
             ),
           ),
         );
