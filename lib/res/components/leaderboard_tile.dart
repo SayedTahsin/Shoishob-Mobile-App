@@ -28,6 +28,7 @@ class LeaderboardTile extends StatelessWidget {
           ),
         ],
       ),
+
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

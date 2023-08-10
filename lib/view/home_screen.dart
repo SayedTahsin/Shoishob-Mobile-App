@@ -4,6 +4,7 @@ import 'package:shoishob/res/components/AppContainer.dart';
 import 'package:shoishob/services/session_manager.dart';
 import 'package:shoishob/view/leaderboard.dart';
 import 'package:shoishob/view/profile_screen.dart';
+import 'package:shoishob/view/tournametList.dart';
 import 'package:shoishob/view/training_screen.dart';
 import 'package:shoishob/view/transportation.dart';
 
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Shoishob",
+          "Welcome to Shoishob",
           style: TextStyle(fontFamily: 'Raleway', fontSize: screenWidth * 0.06),
         ),
         centerTitle: true,
@@ -49,9 +50,11 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * .02),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * .03),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(SessionController().userPhotoUrl.toString(), scale: 1.0),
+                backgroundImage: NetworkImage(
+                    SessionController().userPhotoUrl.toString(),
+                    scale: 1.0),
                 radius: screenHeight * 0.03,
               ),
             ),
@@ -79,92 +82,51 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * .02),
                 child: Container(
                   //find places container
-                  height: screenHeight * .36,
-                  width: double.infinity,
+                  height: screenHeight * .25,
                   decoration: BoxDecoration(
                     color: AppColors.container,
                     borderRadius: BorderRadius.circular(screenWidth * 0.1),
                   ),
-                  child: Column(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Padding(
-                            //Find place text
-                            padding: EdgeInsets.only(
-                                top: screenHeight * 0.15,
-                                left: screenWidth * .06),
-                            child: Text(
-                              "Find\nPlaces",
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: screenWidth * 0.08,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: screenWidth * 0.17),
-                          Image.asset("assets/images/Saly-19.png",
-                              height: screenHeight * 0.25),
-                        ],
-                      ),
-                      Padding(
-                        //Text field find places
-                        padding: EdgeInsets.all(screenWidth * 0.03),
-                        child: TextFormField(
-                          enabled: true,
-                          controller: findController,
-                          focusNode: findFocusNode,
-                          obscureText: false,
-                          onFieldSubmitted: (value) {},
-                          validator: (value) {},
-                          keyboardType: TextInputType.text,
-                          cursorColor: Colors.black,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(
-                                  height: .5,
-                                  fontSize: screenWidth * 0.05,
-                                  fontFamily: 'Reemkufi'),
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.white),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(screenWidth * 0.1)),
-                            ),
-                            filled: true, //<-- SEE HERE
-                            fillColor: Colors.white, //<--
-                            hintText: "what you want to find?",
-                            enabled: false,
-                            contentPadding: EdgeInsets.all(screenWidth * 0.03),
-                            hintStyle: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(
-                                    height: 0,
-                                    color: Colors.grey.withOpacity(0.7),
-                                    fontSize: screenWidth * 0.04,
-                                    fontWeight: FontWeight.w900,
-                                    fontFamily: 'subtile'),
-                          ),
+                      Text(
+                        "\n\n Empowering\n Active PLAY ",
+                        style: TextStyle(
+                          fontFamily: 'Raleway',
+                          fontSize: screenWidth * 0.07,
+                          color: Colors.white,
                         ),
                       ),
+                      // SizedBox(width: screenWidth * 0.1),
+                      Image.asset("assets/images/Saly-19.png",
+                          height: screenHeight * 0.25),
                     ],
                   ),
                 ),
               ),
+              SizedBox(height: screenHeight * 0.03),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppContainer(
-                    ht: screenHeight * 0.2,
-                    wt: screenWidth * 0.4,
-                    icn: Icons.sports_cricket_outlined,
-                    rating: "4.9",
-                    review: "2462",
-                    text: "Sports",
-                    clr: Colors.purpleAccent,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TournamentList(),
+                        ),
+                      );
+                    },
+                    child: AppContainer(
+                      ht: screenHeight * 0.22,
+                      wt: screenWidth * 0.42,
+                      icn: Icons.sports_cricket_outlined,
+                      rating: "4.9",
+                      review: "2462",
+                      text: "Tournaments",
+                      clr: Colors.purpleAccent,
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -176,8 +138,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                     child: AppContainer(
-                      ht: screenHeight * 0.2,
-                      wt: screenWidth * 0.4,
+                      ht: screenHeight * 0.22,
+                      wt: screenWidth * 0.42,
                       icn: Icons.favorite_outline_rounded,
                       rating: "4.4",
                       review: "467",
@@ -200,8 +162,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                     child: AppContainer(
-                      ht: screenHeight * 0.2,
-                      wt: screenWidth * 0.4,
+                      ht: screenHeight * 0.22,
+                      wt: screenWidth * 0.42,
                       icn: Icons.emoji_transportation_outlined,
                       rating: "4.5",
                       review: "234",
@@ -210,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -219,12 +181,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                     child: AppContainer(
-                      ht: screenHeight * 0.2,
-                      wt: screenWidth * 0.4,
+                      ht: screenHeight * 0.22,
+                      wt: screenWidth * 0.42,
                       icn: Icons.bar_chart_outlined,
                       rating: "4.8",
                       review: "62",
-                      text: "Ranking",
+                      text: "Leaderboard",
                       clr: Colors.blue,
                     ),
                   ),

@@ -13,7 +13,8 @@ class MongoDatabase {
       userCollection,
       ticketCollection,
       turfDataCollection,
-      turfBookingCollection;
+      turfBookingCollection,
+      tournamentDataCollection;
   static connect() async {
     db = await Db.create(MONGO_CONN_URL);
     await db.open();
@@ -22,6 +23,7 @@ class MongoDatabase {
     ticketCollection = db.collection(USER_COLLECTION_TICKETS);
     turfDataCollection = db.collection(USER_COLLECTION_TURFDATA);
     turfBookingCollection = db.collection(USER_COLLECTION_TURFBookingDATA);
+    tournamentDataCollection = db.collection(USER_COLLECTION_TournamentDATA);
   }
 
   static Future<void> insertUsersData(UserModel data) async {
@@ -79,6 +81,11 @@ class MongoDatabase {
 
   static Future<List<Map<String, dynamic>>> getTurfInfo() async {
     final arrData = await turfDataCollection.find().toList();
+    return arrData;
+  }
+
+  static Future<List<Map<String, dynamic>>> getTournamentInfo() async {
+    final arrData = await tournamentDataCollection.find().toList();
     return arrData;
   }
   static Future<List<Map<String, dynamic>>> getBookingInfo() async {
