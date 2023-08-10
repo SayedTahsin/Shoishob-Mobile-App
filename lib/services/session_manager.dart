@@ -6,6 +6,7 @@ class SessionController{
   String? userName;
   String? userEmail;
   String? userPhotoUrl;
+  int? point;
 
   factory SessionController(){
     return _session;

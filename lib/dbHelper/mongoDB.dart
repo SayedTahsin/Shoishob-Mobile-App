@@ -38,18 +38,20 @@ class MongoDatabase {
   }
 
   Future<void> insertUser(String name, String email, String photoUrl,
-      DateTime created, DateTime updated, String role) async {
+      DateTime created, DateTime updated, String role,int point) async {
     final data = UserModel(
         name: name,
         email: email,
         photo: photoUrl,
         createdAt: created,
         updatedAt: updated,
-        role: role);
+        role: role,
+        point: point,
+    );
     await MongoDatabase.insertUsersData(data);
   }
 
-  static Future<List<Map<String, dynamic>>> getUserData() async {
+  static Future<List<Map<dynamic, dynamic>>> getUserData() async {
     final arrData = await userCollection.find().toList();
     return arrData;
   }

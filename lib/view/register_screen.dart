@@ -148,7 +148,9 @@ class _ResisterScreenState extends State<ResisterScreen> {
                               "https://w7.pngwing.com/pngs/574/369/png-transparent-avatar-computer-icons-user-random-icons-purple-blue-heroes.png",
                               datetime,
                               datetime,
-                              "user");
+                              "user",
+                              0
+                          );
                         }
                       }),
                 ),

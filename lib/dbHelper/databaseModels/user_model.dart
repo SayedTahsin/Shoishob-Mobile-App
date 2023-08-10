@@ -15,6 +15,7 @@ class UserModel {
   String photo;
   DateTime createdAt;
   DateTime updatedAt;
+  int point;
 
   UserModel({
     required this.name,
@@ -23,15 +24,17 @@ class UserModel {
     required this.photo,
     required this.createdAt,
     required this.updatedAt,
+    required this.point,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+  factory UserModel.fromJson(Map<dynamic, dynamic> json) => UserModel(
     name: json["name"],
     email: json["email"],
     role: json["role"],
     photo: json["photo"],
     createdAt: json["createdAt"],
     updatedAt: json["updatedAt"],
+    point: json['point']
   );
 
   Map<String, dynamic> toJson() => {
@@ -41,5 +44,6 @@ class UserModel {
     "photo": photo,
     "createdAt": createdAt,
     "updatedAt": updatedAt,
+    'point' : point,
   };
 }

@@ -7,7 +7,7 @@ import 'package:shoishob/services/session_manager.dart';
 
 class UserInfoClass {
   String? email, name, photoUrl, id;
-
+  int? point;
   UserInfoClass() {
     _getUserData();
   }
@@ -22,13 +22,14 @@ class UserInfoClass {
       var userData = UserModel.fromJson(snap as Map<String, dynamic>);
       name = userData.name;
       photoUrl = userData.photo;
+      point = userData.point;
       // print(name);
       // print(photoUrl);
       // print(email);
       SessionController().userEmail = email;
       SessionController().userName = name;
       SessionController().userPhotoUrl = photoUrl;
+      SessionController().point = point;
     }
   }
-
 }

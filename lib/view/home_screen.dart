@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoishob/res/colors.dart';
 import 'package:shoishob/res/components/AppContainer.dart';
 import 'package:shoishob/services/session_manager.dart';
+import 'package:shoishob/view/leaderboard.dart';
 import 'package:shoishob/view/profile_screen.dart';
 import 'package:shoishob/view/training_screen.dart';
 import 'package:shoishob/view/transportation.dart';
@@ -208,14 +209,24 @@ class _HomeScreenState extends State<HomeScreen> {
                       clr: Colors.lightGreen,
                     ),
                   ),
-                  AppContainer(
-                    ht: screenHeight * 0.2,
-                    wt: screenWidth * 0.4,
-                    icn: Icons.bar_chart_outlined,
-                    rating: "4.8",
-                    review: "62",
-                    text: "Ranking",
-                    clr: Colors.blue,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Leaderboard(),
+                        ),
+                      );
+                    },
+                    child: AppContainer(
+                      ht: screenHeight * 0.2,
+                      wt: screenWidth * 0.4,
+                      icn: Icons.bar_chart_outlined,
+                      rating: "4.8",
+                      review: "62",
+                      text: "Ranking",
+                      clr: Colors.blue,
+                    ),
                   ),
                 ],
               ),

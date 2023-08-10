@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:shoishob/services/session_manager.dart';
 
 import '../res/components/Tile1.dart';
 
@@ -29,7 +30,7 @@ class _ProfileSTATSState extends State<ProfileSTATS> {
               children: [
                 Tile1(
                     icn: Icons.electric_bolt,
-                    points: 1055.toString(),
+                    points: SessionController().point.toString(),
                     text: "Points"),
                 Tile1(
                     icn: Icons.bar_chart_sharp,
