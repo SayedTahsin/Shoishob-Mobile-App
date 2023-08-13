@@ -49,18 +49,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               );
             },
+
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * .03),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
                     SessionController().userPhotoUrl.toString(),
-                    scale: 1.0),
+                    scale: 1),
                 radius: screenHeight * 0.03,
               ),
             ),
           ),
         ],
       ),
+
       body: SingleChildScrollView(
         child: Container(
           //Background Image

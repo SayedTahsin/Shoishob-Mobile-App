@@ -128,14 +128,14 @@ class _ResisterScreenState extends State<ResisterScreen> {
                         keyBoardType: TextInputType.visiblePassword,
                         hint: "password",
                         obsecureText: true),
-                    SizedBox(height: screenHeight * .015),
+                    SizedBox(height: screenHeight * .05),
                   ],
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * .15),
                 child: Container(
-                  alignment: AlignmentDirectional.centerEnd,
+                  alignment: AlignmentDirectional.center,
                   child: AppButton(
                       title: "Register",
                       onPress: () {
@@ -156,25 +156,25 @@ class _ResisterScreenState extends State<ResisterScreen> {
                 ),
               ),
               SizedBox(height: screenHeight * .03),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(
-                    height: screenHeight * 0.045,
-                    image: const AssetImage('assets/images/google.png'),
-                  ),
-                ],
-              ),
-              SizedBox(height: screenHeight * .01),
-              Text(
-                "You can sign-in from here",
-                style: TextStyle(
-                  fontFamily: 'Raleway',
-                  fontSize: screenWidth * 0.035,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.heading1,
-                ),
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Image(
+              //       height: screenHeight * 0.045,
+              //       image: const AssetImage('assets/images/google.png'),
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(height: screenHeight * .01),
+              // Text(
+              //   "You can sign-in from here",
+              //   style: TextStyle(
+              //     fontFamily: 'Raleway',
+              //     fontSize: screenWidth * 0.035,
+              //     fontWeight: FontWeight.bold,
+              //     color: AppColors.heading1,
+              //   ),
+              // ),
             ],
           ),
         ),

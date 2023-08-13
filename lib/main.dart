@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await MongoDatabase.connect();
+
   runApp(
     RestartWidget(
       child: const MyApp(),
