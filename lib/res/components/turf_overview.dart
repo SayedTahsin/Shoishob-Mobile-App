@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 import 'package:shoishob/res/colors.dart';
 import 'package:shoishob/services/UserInfoClass.dart';
 import 'package:shoishob/services/session_manager.dart';
@@ -54,12 +55,21 @@ class TurfOverview extends StatelessWidget {
               SizedBox(height: screenHeight * 0.01),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-                child: Text(
-                  "About Us: $description",
-                  style: TextStyle(
+                child: ReadMoreText(
+                  "About us:  $description",
+                  trimLines: 3,
+                  colorClickableText: Colors.purple,
+                  trimMode: TrimMode.Line,
+                  trimCollapsedText: '\nShow more',
+                  trimExpandedText: '\nShow less',
+                  moreStyle: TextStyle(
                       fontSize: screenWidth * 0.03,
-                      fontFamily: "subtile",
-                      fontWeight: FontWeight.w900),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                  lessStyle: TextStyle(
+                      fontSize: screenWidth * 0.03,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
                 ),
               ),
               SizedBox(height: screenHeight * 0.02),
@@ -72,8 +82,6 @@ class TurfOverview extends StatelessWidget {
               ),
               SizedBox(height: screenHeight * 0.02),
               GestureDetector(
-                //Start Now button
-
                 onTap: () {
                   Navigator.push(
                     context,
@@ -129,17 +137,27 @@ class TurfOverview extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.1),
+              SizedBox(height: screenHeight * 0.03),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
-                child: Text(
-                  "Rules: $rules",
-                  style: TextStyle(
+                child: ReadMoreText(
+                  "Rules:   $rules",
+                  trimLines: 3,
+                  colorClickableText: Colors.pink,
+                  trimMode: TrimMode.Line,
+                  trimCollapsedText: '\t\tShow more',
+                  trimExpandedText: '\t\tShow less',
+                  moreStyle: TextStyle(
                       fontSize: screenWidth * 0.03,
-                      fontFamily: "subtile",
-                      fontWeight: FontWeight.w900),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
+                  lessStyle: TextStyle(
+                      fontSize: screenWidth * 0.03,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
                 ),
               ),
+              SizedBox(height: screenHeight * 0.1),
             ],
           ),
         ),

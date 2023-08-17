@@ -5,6 +5,7 @@ import '../utils/utils.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 import 'databaseModels/database_model_tickets.dart';
+import 'databaseModels/tournament_regestration.dart';
 import 'databaseModels/turf_info.dart';
 import 'databaseModels/user_model.dart';
 
@@ -14,7 +15,8 @@ class MongoDatabase {
       ticketCollection,
       turfDataCollection,
       turfBookingCollection,
-      tournamentDataCollection;
+      tournamentDataCollection,
+      tournamentRegistration;
   static connect() async {
     db = await Db.create(MONGO_CONN_URL);
     await db.open();
@@ -24,6 +26,8 @@ class MongoDatabase {
     turfDataCollection = db.collection(USER_COLLECTION_TURFDATA);
     turfBookingCollection = db.collection(USER_COLLECTION_TURFBookingDATA);
     tournamentDataCollection = db.collection(USER_COLLECTION_TournamentDATA);
+    tournamentRegistration =
+        db.collection(USER_COLLECTION_TournamentRegistration);
   }
 
   static Future<void> insertUsersData(UserModel data) async {
@@ -40,17 +44,74 @@ class MongoDatabase {
   }
 
   Future<void> insertUser(String name, String email, String photoUrl,
-      DateTime created, DateTime updated, String role,int point) async {
+      DateTime created, DateTime updated, String role, int point) async {
     final data = UserModel(
-        name: name,
-        email: email,
-        photo: photoUrl,
-        createdAt: created,
-        updatedAt: updated,
-        role: role,
-        point: point,
+      name: name,
+      email: email,
+      photo: photoUrl,
+      createdAt: created,
+      updatedAt: updated,
+      role: role,
+      point: point,
     );
     await MongoDatabase.insertUsersData(data);
+  }
+
+  static Future<void> insertTournamentRegistration(
+      TournamentRegistrationModel data) async {
+    try {
+      var result = await tournamentRegistration.insertOne(data.toJson());
+      if (result.toString().isEmpty) {
+        print("Registration cannot be completed\n");
+      } else {
+        print("Registration Complete\n");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> insertTournamentRegistrationInfo(
+      String address,
+      String captainName,
+      String city,
+      DateTime createdAt,
+      DateTime updatedAt,
+      String email,
+      int person,
+      String player2Email,
+      String player3Email,
+      String player4Email,
+      String player5Email,
+      String player6Email,
+      String player7Email,
+      String playerPhoneOne,
+      int price,
+      String teamName,
+      transactionId,
+      bool paid,
+      ObjectId tournamentId) async {
+    final data = TournamentRegistrationModel(
+        address: address,
+        captainName: captainName,
+        city: city,
+        email: email,
+        person: person,
+        player2Email: player2Email,
+        player3Email: player3Email,
+        player4Email: player4Email,
+        player5Email: player5Email,
+        player6Email: player6Email,
+        player7Email: player7Email,
+        playerPhoneOne: playerPhoneOne,
+        price: price,
+        teamName: teamName,
+        transactionId: transactionId,
+        paid: paid,
+        tournamentId: tournamentId,
+        createdAt: createdAt,
+        updatedAt: updatedAt);
+    await MongoDatabase.insertTournamentRegistration(data);
   }
 
   static Future<List<Map<dynamic, dynamic>>> getUserData() async {
@@ -70,8 +131,6 @@ class MongoDatabase {
     return arrData;
   }
 
-
-
   static Future<Map<String, dynamic>?> getBookingDataForDuplicated(
       String slot, String date, String turf) async {
     final arrData = await turfBookingCollection.findOne(
@@ -88,15 +147,16 @@ class MongoDatabase {
     final arrData = await tournamentDataCollection.find().toList();
     return arrData;
   }
+
   static Future<List<Map<String, dynamic>>> getBookingInfo() async {
     final arrData = await turfBookingCollection.find().toList();
     return arrData;
   }
+
   static Future<List<Map<String, dynamic>>> getTicketInfo() async {
     final arrData = await ticketCollection.find().toList();
     return arrData;
   }
-
 
   static Future<void> insertTickets(DatabaseModelTicket data) async {
     try {
@@ -113,7 +173,7 @@ class MongoDatabase {
   }
 
   Future<void> insertTicketsData(String name, String Date, String phone,
-      String pickup, String destination, String ticketNo,String email) async {
+      String pickup, String destination, String ticketNo, String email) async {
     final data = DatabaseModelTicket(
         name: name,
         date: Date,
@@ -121,8 +181,7 @@ class MongoDatabase {
         pickup: pickup,
         destination: destination,
         ticketNo: ticketNo,
-        email: email
-    );
+        email: email);
     await MongoDatabase.insertTickets(data);
   }
 

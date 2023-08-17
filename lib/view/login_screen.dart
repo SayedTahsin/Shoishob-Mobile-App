@@ -26,13 +26,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> signInWithEmailAndPassword() async {
     try {
+      
       await Auth()
           .signWithEmailAndPassword(
               email: emailController.text, password: passwordController.text)
           .then((value) {
             SessionController().userEmail=emailController.text;
         Navigator.pushNamed(context, RouteName.verifyEmail);
-        // Navigator.pushNamed(context, RouteName.dashBoard);
       });
     } on FirebaseAuthException catch (e) {
       Utils.toastMessage(e.message.toString());

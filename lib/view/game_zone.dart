@@ -64,7 +64,7 @@ class _GameZoneState extends State<GameZone> {
                       if (snapshot.hasData) {
                         // print(snapshot.data!.length);
                         return ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
@@ -89,7 +89,7 @@ class _GameZoneState extends State<GameZone> {
                       } else if (snapshot.hasError) {
                         return Text('Error: ${snapshot.error}');
                       } else {
-                        return Center(child: CircularProgressIndicator()); // Loading indicator
+                        return const Center(child: CircularProgressIndicator()); // Loading indicator
                       }
                     },
                   ),

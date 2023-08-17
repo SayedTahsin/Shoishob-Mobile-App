@@ -4,5 +4,6 @@ const USER_COLLECTION_TICKETS = "tickets";
 const USER_COLLECTION_TURFDATA = "turfdatas";
 const USER_COLLECTION_TURFBookingDATA = "turfbookingdatas";
 const USER_COLLECTION_TournamentDATA = "tournamentdetails";
+const USER_COLLECTION_TournamentRegistration = "tournamentregistrations";
 const STOREID = "shois64cab51dc201e";
 const STOREPASS = "shois64cab51dc201e@ssl";

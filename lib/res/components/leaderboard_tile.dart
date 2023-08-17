@@ -5,6 +5,7 @@ class LeaderboardTile extends StatelessWidget {
   const LeaderboardTile(
       {super.key, required this.rank, required this.name, required this.point});
   final String rank, name, point;
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;

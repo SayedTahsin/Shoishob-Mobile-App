@@ -50,6 +50,7 @@ class TournamentList extends StatelessWidget {
                     tournament_name: snapshot.data![index]['tournament_name'],
                     turf_id: snapshot.data![index]['turf_id'],
                     turf_name: snapshot.data![index]['turf_name'],
+                    id: snapshot.data![index]['_id'],
                   );
                 },
               );

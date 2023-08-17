@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -45,24 +44,20 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProfileScreen(),
+                  builder: (context) => const ProfileScreen(),
                 ),
               );
             },
-
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * .03),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                    SessionController().userPhotoUrl.toString(),
-                    scale: 1),
+                backgroundImage: NetworkImage(SessionController().userPhotoUrl.toString()),
                 radius: screenHeight * 0.03,
               ),
             ),
           ),
         ],
       ),
-
       body: SingleChildScrollView(
         child: Container(
           //Background Image
