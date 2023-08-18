@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:shoishob/services/UserInfoClass.dart';
-import 'package:shoishob/services/session_manager.dart';
 import 'package:shoishob/view/health_tracker.dart';
 import 'game_zone.dart';
 import 'home_screen.dart';
@@ -15,6 +13,13 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    UserInfoClass();
+    super.initState();
+  }
   final controller = PersistentTabController(initialIndex: 0);
   List<Widget> _buildScreen() {
     return [
@@ -61,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    UserInfoClass();
+    // UserInfoClass();
     return PersistentTabView(
       context,
       screens: _buildScreen(),

@@ -79,7 +79,7 @@ class TournamentTile extends StatelessWidget {
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(screenWidth * 0.05),
+            borderRadius: BorderRadius.circular(screenWidth * 0.02),
             boxShadow: [
               BoxShadow(
                 blurRadius: screenHeight * 0.01,

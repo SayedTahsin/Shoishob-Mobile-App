@@ -34,6 +34,9 @@ class _BookingListState extends State<BookingList> {
                   if (snapshot.data![index]['email'] ==
                       SessionController().userEmail.toString()) {
                     return BookingTile(
+                      price: snapshot.data![index]['price'].toString(),
+                      transactionID: snapshot.data![index]['transactionId'],
+                        phone: snapshot.data![index]['phone'],
                         turfName: snapshot.data![index]['turf'],
                         date: snapshot.data![index]['selectedDate'],
                         slot: snapshot.data![index]['slot'],

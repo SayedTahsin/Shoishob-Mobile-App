@@ -5,7 +5,7 @@ import 'package:shoishob/dbHelper/mongoDB.dart';
 import 'package:shoishob/services/session_manager.dart';
 
 class UserInfoClass {
-  String? email, name, photoUrl, id;
+  String? email, name, photoUrl="https://cdn.imgbin.com/7/15/1/imgbin-computer-icons-user-profile-avatar-french-people-xM6vuY3iWZ6yhbNYaVeX2nvVL.jpg", id;
   int? point;
   UserInfoClass() {
     _getUserData();

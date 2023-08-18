@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shoishob/res/colors.dart';
 import 'package:shoishob/res/components/AppContainer.dart';
@@ -23,7 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    UserInfoClass();
+    Timer(Duration(seconds: 1), () {
+      setState(() {}
+      );
+    });
     super.initState();
   }
 
@@ -51,7 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * .03),
               child: CircleAvatar(
-                backgroundImage: NetworkImage(SessionController().userPhotoUrl.toString()),
+                backgroundImage:
+                    NetworkImage(SessionController().userPhotoUrl.toString()),
                 radius: screenHeight * 0.03,
               ),
             ),
@@ -76,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               SizedBox(height: screenHeight * .015),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * .02),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * .04),
                 child: Container(
                   //find places container
                   height: screenHeight * .25,
@@ -84,21 +90,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: AppColors.container,
                     borderRadius: BorderRadius.circular(screenWidth * 0.1),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "\n\n Empowering\n Active PLAY ",
-                        style: TextStyle(
-                          fontFamily: 'Raleway',
-                          fontSize: screenWidth * 0.07,
-                          color: Colors.white,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "\n\n Empowering\n Active PLAY ",
+                          style: TextStyle(
+                            fontFamily: 'Raleway',
+                            fontSize: screenWidth * 0.06,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      // SizedBox(width: screenWidth * 0.1),
-                      Image.asset("assets/images/Saly-19.png",
-                          height: screenHeight * 0.25),
-                    ],
+                        // SizedBox(width: screenWidth * 0.1),
+                        Image.asset("assets/images/Saly-19.png",
+                            height: screenHeight * 0.25),
+                      ],
+                    ),
                   ),
                 ),
               ),
